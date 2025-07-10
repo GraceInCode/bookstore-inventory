@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore Inventory</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        nav { margin-bottom: 20px; }
+        nav a { margin-right: 10px; }
+        .error { color: red; }
+        form { margin-bottom: 20px; }
+        label { display: block; margin-top: 10px; }
+        input, textarea { width: 100%; max-width: 300px; }
+        button { margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/categories">Home (Categories)</a>
+        <a href="/books/new">Add Book</a>
+        <a href="/categories/new">Add Category"></a>
+    </nav>
+    <main>
+        <%- body %>
+    </main>
+</body>
+</html>
