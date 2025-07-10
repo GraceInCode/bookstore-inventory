@@ -108,9 +108,11 @@ Set Environment Variables
 
 In your Railway project settings, add the following
 
+``
 environment variables:
             DATABASE_URL: Use the value provided by Railway.
             ADMIN_PASSWORD: Set to your chosen admin password.
+``
 
 Deploy
 
