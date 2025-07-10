@@ -63,60 +63,50 @@ ADMIN_PASSWORD=your_secret_password
 
 ## Populate Dummy Data (Optional)
 
-    • If you have a dummy-data.sql script, run it to insert sample data:
-    
-    ``
-        psql -U your_username -d bookstore_db -f dummy-data.sql
-    ``   
+• If you have a dummy-data.sql script, run it to insert sample data:
+
+``
+psql -U your_username -d bookstore_db -f dummy-data.sql
+``
 
 Usage
 
-    Run the App Locally
-    
-    ``
-    npm start
-    ``
+Run the App Locally
+``
+npm start
+``
 
-        The app will be available at http://localhost:3000.
-    Interact with the App
-        Home Page: View all categories.
-        Category Page: View books in a specific category.
-        Book Page: View details of a specific book.
-        Add New Category/Book: Use the navigation links to access forms for adding new categories or books.
-        Edit/Delete Category/Book: Use the edit and delete options on the category or book pages (requires the admin password).
+The app will be available at http://localhost:3000.
+Interact with the App
+Home Page: View all categories.
+Category Page: View books in a specific category.
+Book Page: View details of a specific book.
+Add New Category/Book: Use the navigation links to access forms for adding new categories or books.
+Edit/Delete Category/Book: Use the edit and delete options on the category or book pages (requires the admin password).
 
 Deployment
 
 To deploy the app on Railway, follow these steps:
 
-    Push to GitHub
+Push to GitHub
         Ensure your code is committed and pushed to a GitHub repository.
-    Create a Railway Project
-        Sign up at Railway.
-        Create a new project and link your GitHub repository.
-    Add PostgreSQL Database
-        Use Railway's plugin to add a PostgreSQL database to your project.
-        Note the provided DATABASE_URL.
-    Set Environment Variables
-        In your Railway project settings, add the following environment variables:
+Create a Railway Project
+Sign up at Railway.
+Create a new project and link your GitHub repository.
+Add PostgreSQL Database
+Use Railway's plugin to add a PostgreSQL database to your project.
+Note the provided DATABASE_URL.
+Set Environment Variables
+In your Railway project settings, add the following environment variables:
             DATABASE_URL: Use the value provided by Railway.
             ADMIN_PASSWORD: Set to your chosen admin password.
-    Deploy
-        Railway will automatically deploy your app. Access it via the provided URL.
-    Populate Database
-        Connect to the Railway database using psql with the DATABASE_URL and run the dummy-data.sql script if needed.
-
-Project Structure
-
-    app.js: Main application file.
-    routes/: Contains route handlers for categories and books.
-    views/: EJS templates for rendering pages.
-    .env: Environment variables (not committed to version control).
-    dummy-data.sql: SQL script for inserting sample data.
+Deploy
+Railway will automatically deploy your app. Access it via the provided URL.
+Populate Database
+Connect to the Railway database using psql with the DATABASE_URL and run the dummy-data.sql script if needed.
 
 Additional Notes
 
-    The app uses EJS for templating and includes basic CSS for styling.
-    Ensure that the admin password is kept secure and not shared publicly.
-    For local development, update the .env file with your actual database credentials.
-    
+The app uses EJS for templating and includes basic CSS for styling.
+Ensure that the admin password is kept secure and not shared publicly.
+For local development, update the .env file with your actual database credentials.
