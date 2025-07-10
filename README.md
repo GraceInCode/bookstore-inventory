@@ -76,7 +76,7 @@ Run the App Locally
 npm start
 ``
 
-The app will be available at http://localhost:3000.
+The app will be available at [http://localhost:3000](http://localhost:3000).
 Interact with the App
 Home Page: View all categories.
 Category Page: View books in a specific category.
@@ -89,7 +89,7 @@ Deployment
 To deploy the app on Railway, follow these steps:
 
 Push to GitHub
-        Ensure your code is committed and pushed to a GitHub repository.
+Ensure your code is committed and pushed to a GitHub repository.
 Create a Railway Project
 Sign up at Railway.
 Create a new project and link your GitHub repository.
