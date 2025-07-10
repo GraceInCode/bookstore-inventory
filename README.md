@@ -89,24 +89,41 @@ Deployment
 To deploy the app on Railway, follow these steps:
 
 Push to GitHub
+
 Ensure your code is committed and pushed to a GitHub repository.
+
 Create a Railway Project
+
 Sign up at Railway.
+
 Create a new project and link your GitHub repository.
+
 Add PostgreSQL Database
+
 Use Railway's plugin to add a PostgreSQL database to your project.
+
 Note the provided DATABASE_URL.
+
 Set Environment Variables
-In your Railway project settings, add the following environment variables:
+
+In your Railway project settings, add the following
+
+environment variables:
             DATABASE_URL: Use the value provided by Railway.
             ADMIN_PASSWORD: Set to your chosen admin password.
+
 Deploy
+
 Railway will automatically deploy your app. Access it via the provided URL.
+
 Populate Database
+
 Connect to the Railway database using psql with the DATABASE_URL and run the dummy-data.sql script if needed.
 
 Additional Notes
 
 The app uses EJS for templating and includes basic CSS for styling.
+
 Ensure that the admin password is kept secure and not shared publicly.
+
 For local development, update the .env file with your actual database credentials.
