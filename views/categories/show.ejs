@@ -1,0 +1,16 @@
+<h1><%= category.name %></h1>
+<p><%= category.description || 'No description available.' %></p>
+<h2>Books in this Category</h2>
+<ul>
+    <% books.forEach(book => { %>
+        <li>
+            <a href="/books/<%= book.id %>"><%= book.title %"> by <%= book.author %></a>
+        </li>
+    <% }) %>
+</ul>
+<a href="/categories/<%= category.id %>/edit">Edit Category</a>
+<form action="/categories/<%= category.id %>?_method=DELETE" method="POST" style="display: inline;">
+    <label for="admin_password">Admin Password:</label>
+    <input type="password" name="admin_password" required>
+    <button type="submit">Delete Category</button>
+</form>
