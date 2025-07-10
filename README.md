@@ -13,9 +13,8 @@ This is an inventory management application for a bookstore, built as part of a 
 
 Follow these steps to set up the project locally:
 
-    Clone the Repository
-
 ``
+Clone the Repository
 git clone https://github.com/your-username/bookstore-inventory.git
 cd bookstore-inventory
 ``
