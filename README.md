@@ -25,9 +25,11 @@ npm install
 ``
 
 Set Up Environment Variables Create a .env file in the root directory with the following content:
+
 ``
 DATABASE_URL=postgres://your_username:your_password@localhost:5432/bookstore_db
 ADMIN_PASSWORD=your_secret_password
+``
 
 ## Set Up PostgreSQL Database
 
