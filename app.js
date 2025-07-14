@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const { Pool } = require('pg');
 const methodOverride = require('method-override');
+const expressLayouts = require('express-ejs-layouts');
 const categoriesRouter = require('./routes/categories');
 const booksRouter = require('./routes/books');
 
@@ -14,6 +15,9 @@ const pool = new Pool({
 });
 
 // Middleware
+app.use(express.static('public'));
+app.use(expressLayouts);
+app.set('layout', 'layout');
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
