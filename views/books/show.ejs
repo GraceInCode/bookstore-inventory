@@ -1,19 +1,59 @@
-<h1><%= book.title %></h1>
-<p><strong>Author:</strong> <%= book.author %></p>
-<p><strong>Price:</strong> $<%= book.price %></p>
-<p><strong>Stock:</strong><%= book.stock_quantity %></p>
-<p><strong>Description:</strong> <%= book.description || 'No description available.' %></p>
-<p><strong>ISBN:</strong> <%= book.isbn || 'N/A' %></p>
-<p><strong>Categories:</strong>
-  <% if (book.length > 0) { %>
-    <%= categories.map(c => c.name).join(', ') %>
-    <% } else { %>
-        None
-    <% } %>
-</p>
-<a href="/books/<%= book.id %>/edit">Edit Book</a>
-<form action="/books/<%= book.id %>?_method=DELETE" method="POST" style="display: inline;">
-    <label for="admin_password">Admin Password:</label>
-    <input type="password" name="admin_password" required>
-    <button type="submit">Delete Book</button>
-</form>
+<div class="book-details">
+    <h1><%= book.title %></h1>
+    <p><strong>Author:</strong> <%= book.author %></p>
+    <p><strong>Price:</strong> $<%= book.price %></p>
+    <p><strong>Stock:</strong> <%= book.stock_quantity %></p>
+    <p><strong>ISBN:</strong> <%= book.isbn %></p>
+    <p><strong>Description:</strong> <%= book.description %></p>
+    <div class="categories">
+        <p><strong>Categories:</strong></p>
+        <% if (categories && categories.length > 0) { %>
+        <ul>
+            <% categories.forEach(category => { %>
+            <li><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
+            <% }) %>
+        </ul>
+        <% } else { %>
+        <p>No categories assigned</p>
+        <% } %>
+    </div>
+    <div style="margin-top: 20px;">
+        <a href="/books/<%= book.id %>/edit" class="edit-btn">Edit Book</a>
+        <button onclick="showDeleteModal()" class="delete-btn">Delete Book</button>
+        
+        <div id="deleteModal" class="modal">
+            <div class="modal-content">
+                <h2>Confirm Deletion</h2>
+                <p>Enter admin password to delete the book:</p>
+                <input type="password" id="adminPassword" placeholder="Admin Password">
+                <button onclick="deleteItem()">Delete</button>
+                <button onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+        
+        <form id="deleteForm" method="POST" action="/books/<%= book.id %>?_method=DELETE" style="display:none;">
+            <input type="hidden" name="admin_password" id="formAdminPassword">
+        </form>
+    </div>
+    <div style="margin-top: 20px;">
+        <a href="/categories">← Back to Categories</a>
+    </div>
+</div>
+
+<script>
+function showDeleteModal() {
+    document.getElementById('deleteModal').style.display = 'block';
+}
+function closeModal() {
+    document.getElementById('deleteModal').style.display = 'none';
+}
+function deleteItem() {
+    const password = document.getElementById('adminPassword').value;
+    if (!password) {
+        alert('Password is required');
+        return;
+    }
+    document.getElementById('formAdminPassword').value = password;
+    document.getElementById('deleteForm').submit();
+}
+</script>
