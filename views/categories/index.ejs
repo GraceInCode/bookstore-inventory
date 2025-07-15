@@ -1,8 +1,9 @@
 <h1>Book Categories</h1>
-<ul>
+<div class="category-list">
     <% categories.forEach(category => { %>
-        <li>
-            <a href="/categories/<%= category.id %>"><%= category.name %></a>
-        </li>
+        <div class="category-card">
+            <h3><a href="/categories/<%= category.id %>"><%= category.name %></a></h3>
+            <p><%= category.description %></p>
+        </div>
     <% }) %>
-</ul>
+</div>

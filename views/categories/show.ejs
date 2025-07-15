@@ -1,16 +1,50 @@
 <h1><%= category.name %></h1>
-<p><%= category.description || 'No description available.' %></p>
+<p><%= category.description %></p>
 <h2>Books in this Category</h2>
-<ul>
+<div class="book-list">
     <% books.forEach(book => { %>
-        <li>
-            <a href="/books/<%= book.id %>"><%= book.title %"> by <%= book.author %></a>
-        </li>
+    <div class="book-card">
+        <h4><a href="/books/<%= book.id %>"><%= book.title %></a></h4>
+        <p>by <%= book.author %></p>
+    </div>
     <% }) %>
-</ul>
-<a href="/categories/<%= category.id %>/edit">Edit Category</a>
-<form action="/categories/<%= category.id %>?_method=DELETE" method="POST" style="display: inline;">
-    <label for="admin_password">Admin Password:</label>
-    <input type="password" name="admin_password" required>
-    <button type="submit">Delete Category</button>
+</div>
+
+<a href="/categories/<%= category.id %>/edit" class="edit-btn">Edit Category</a>
+<button onclick="showDeleteModal()" class="delete-btn">Delete Category</button>
+
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <h2>Confirm Deletion</h2>
+        <p>Enter admin password to delete the category:</p>
+        <input type="password" id="adminPassword" placeholder="Admin Password">
+        <button onclick="deleteItem()">Delete</button>
+        <button onclick="closeModal()">Cancel</button>
+    </div>
+</div>
+
+<form id="deleteForm" method="POST" action="/categories/<%= category.id %>?_method=DELETE" style="display:none;">
+    <input type="hidden" name="admin_password" id="formAdminPassword">
 </form>
+
+<div style="margin-top: 20px;">
+        <a href="/categories">← Back to Categories</a>
+    </div>
+
+<script>
+function showDeleteModal() {
+    document.getElementById('deleteModal').style.display = 'block';
+}
+function closeModal() {
+    document.getElementById('deleteModal').style.display = 'none';
+}
+function deleteItem() {
+    const password = document.getElementById('adminPassword').value;
+    if (!password) {
+        alert('Password is required');
+        return;
+    }
+    document.getElementById('formAdminPassword').value = password;
+    document.getElementById('deleteForm').submit();
+}
+</script>
