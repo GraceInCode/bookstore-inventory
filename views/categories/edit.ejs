@@ -1,0 +1,13 @@
+<h1>Edit Category: <%= category.name %></h1>
+<form action="/categories/<%= category.id %>?_method=PUT" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="<%= category.name %>" required>
+    
+    <label for="description">Description:</label>
+    <textarea id="description" name="description"><%= category.description %></textarea>
+    
+    <label for="admin_password">Admin Password:</label>
+    <input type="password" id="admin_password" name="admin_password" required>
+    
+    <button type="submit">Update Category</button>
+</form>
