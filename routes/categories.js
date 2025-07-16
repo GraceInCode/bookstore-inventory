@@ -7,9 +7,10 @@ module.exports = (pool) => {
     router.get('/', async (req, res) => {
         try {
             const result = await pool.query('SELECT * FROM categories ORDER BY name');
+            console.log('Categories Query Result:', result.rows);
             res.render('categories/index', { categories: result.rows });
         } catch (err) {
-            console.error(err);
+            console.error('Database Error:', err.message);
             res.status(500).send('Server Error');
         }
     });
